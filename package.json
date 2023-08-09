@@ -15,7 +15,8 @@
     "build:page": "cross-env TARGET=page vite build",
     "serve": "vite preview",
     "test": "vitest",
-    "typecheck": "vue-tsc --noEmit"
+    "typecheck": "vue-tsc --noEmit",
+    "prettier": "prettier --config .prettierrc.js --write ."
   },
   "dependencies": {
     "animate.css": "^4.1.1",

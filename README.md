@@ -51,33 +51,37 @@ data: {
 }
 
 ```
+
 作用域插槽返回了3个字段：
-`item` 原始数据, `url` 图片资源, `index` 卡片索引 
+`item` 原始数据, `url` 图片资源, `index` 卡片索引
 
 #### `Props` 参数
-| 参数名              | 类型    | 默认值     | 描述                                                                               |
-| ----------------- | ------- | ----------- | ----------------------------------------------------------------------------------------- |
-| `list`              | `Array`   | []          | 列表数据 |
-| `rowKey`           | `String`  | `id`          | 数据唯一的字段，比如列表里面的`id`, 如果要删除卡片，该字段为必填 |
-| `imgSelector`       | `String`  | `src`         | 图片字段选择器，如果层级较深，使用 `xxx.xxx.xxx` 方式 |
-| `width`             | `Number`  | `200`         | 卡片在 PC 上的宽度 |
-| `breakpoints`       | `Object`  | `breakpoints` | 自定义行显示个数，主要用于对移动端的适配 |
-| `gutter`            | `Number`  | `10`          | 卡片之间的间隙 |
-| `hasAroundGutter`   | `Boolean` | `true`        | 容器四周是否有 `gutter` 边距 |
-| `animationPrefix`   | `String`  | `animate__animated` | `animate.css` 的动画绑定 `className`，默认的是 `4.x.x` 版本，如果想使用老版本，只需要改成 `animated` 即可 |
-| `animationEffect`   | `String`  | `fadeIn`      | 卡片入场动画，默认只有 `fadeIn`，引入 `animation.css` 后可使用其他动画 |
-| `animationDuration` | `Number`  | `1000`        | 动画执行时间（单位毫秒）|
-| `animationDelay`    | `Number`  | `300`         | 动画延迟（单位毫秒）|
-| `backgroundColor`   | `String`  | `#ffffff`     | 背景颜色 |
-| `loadProps`         | `Object`  | `loadProps`   | 加载的图片和失败的图片 |
-| `lazyload`          | `Boolean` | `true`        | 是否开启懒加载 |
-| `crossOrigin`       | `Boolean` | `true`        | 图片加载是否开启跨域 |
-| `delay`             | `Number`  | `300`         | 布局刷新的防抖时间，默认 `300ms` 内没有再次触发才刷新布局。（图片加载完成；容器大小、`list`、`width`、`gutter`、`hasAroundGutter`变化时均会触发刷新） |
+
+| 参数名              | 类型      | 默认值              | 描述                                                                                                                                                  |
+| ------------------- | --------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `list`              | `Array`   | []                  | 列表数据                                                                                                                                              |
+| `rowKey`            | `String`  | `id`                | 数据唯一的字段，比如列表里面的`id`, 如果要删除卡片，该字段为必填                                                                                      |
+| `imgSelector`       | `String`  | `src`               | 图片字段选择器，如果层级较深，使用 `xxx.xxx.xxx` 方式                                                                                                 |
+| `width`             | `Number`  | `200`               | 卡片在 PC 上的宽度                                                                                                                                    |
+| `breakpoints`       | `Object`  | `breakpoints`       | 自定义行显示个数，主要用于对移动端的适配                                                                                                              |
+| `gutter`            | `Number`  | `10`                | 卡片之间的间隙                                                                                                                                        |
+| `hasAroundGutter`   | `Boolean` | `true`              | 容器四周是否有 `gutter` 边距                                                                                                                          |
+| `animationPrefix`   | `String`  | `animate__animated` | `animate.css` 的动画绑定 `className`，默认的是 `4.x.x` 版本，如果想使用老版本，只需要改成 `animated` 即可                                             |
+| `animationEffect`   | `String`  | `fadeIn`            | 卡片入场动画，默认只有 `fadeIn`，引入 `animation.css` 后可使用其他动画                                                                                |
+| `animationDuration` | `Number`  | `1000`              | 动画执行时间（单位毫秒）                                                                                                                              |
+| `animationDelay`    | `Number`  | `300`               | 动画延迟（单位毫秒）                                                                                                                                  |
+| `backgroundColor`   | `String`  | `#ffffff`           | 背景颜色                                                                                                                                              |
+| `loadProps`         | `Object`  | `loadProps`         | 加载的图片和失败的图片                                                                                                                                |
+| `lazyload`          | `Boolean` | `true`              | 是否开启懒加载                                                                                                                                        |
+| `crossOrigin`       | `Boolean` | `true`              | 图片加载是否开启跨域                                                                                                                                  |
+| `delay`             | `Number`  | `300`               | 布局刷新的防抖时间，默认 `300ms` 内没有再次触发才刷新布局。（图片加载完成；容器大小、`list`、`width`、`gutter`、`hasAroundGutter`变化时均会触发刷新） |
 
 #### `方法`
+
 `LazyImg`组件添加了`load`回调方法
 
 `breakpoints`
+
 ```javascript
 breakpoints: {
   1200: { //当屏幕宽度小于等于1200
@@ -93,27 +97,28 @@ breakpoints: {
 ```
 
 `loadProps`
+
 ```javascript
 import loading from 'assets/loading.png'
 import error from 'assets/error.png'
 loadProps: {
-  loading,
-  error
+  loading, error
 }
 ```
 
 懒加载图片样式覆盖，需要将覆盖样式放在全局才能生效
+
 ```css
-.lazy__img[lazy=loading] {
+.lazy__img[lazy='loading'] {
   padding: 5em 0;
   width: 48px;
 }
 
-.lazy__img[lazy=loaded] {
+.lazy__img[lazy='loaded'] {
   width: 100%;
 }
 
-.lazy__img[lazy=error] {
+.lazy__img[lazy='error'] {
   padding: 5em 0;
   width: 48px;
 }

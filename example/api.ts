@@ -97,8 +97,9 @@ const website = 'https://www.getphotoblanket.com'
 export const getList = ({ page = 1, pageSize = 20 }) => {
   const url = `${website}/products.json?page=${page}&limit=${pageSize}`
   return fetch(url)
-    .then(res => res.json())
-    .then(res => res.products).then((res) => {
+    .then((res) => res.json())
+    .then((res) => res.products)
+    .then((res) => {
       return res.map((item: any) => {
         return {
           id: randomID(),

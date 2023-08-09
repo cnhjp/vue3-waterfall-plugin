@@ -12,8 +12,7 @@ export function hasClass(el: HTMLElement, className: string) {
 }
 
 export function addClass(el: HTMLElement, className: string) {
-  if (hasClass(el, className))
-    return
+  if (hasClass(el, className)) return
 
   const newClass = el.className.split(/\s+/)
   newClass.push(className)
@@ -22,7 +21,7 @@ export function addClass(el: HTMLElement, className: string) {
 
 export function removeClass(el: HTMLElement, className: string) {
   if (hasClass(el, className)) {
-    const newClass = el.className.split(/\s+/).filter(name => name !== className)
+    const newClass = el.className.split(/\s+/).filter((name) => name !== className)
     el.className = newClass.join(' ')
   }
 }
@@ -40,19 +39,16 @@ const vendor = (() => {
 
   for (const key in transformNames) {
     const val = transformNames[key]
-    if (elementStyle[val] !== undefined)
-      return key
+    if (elementStyle[val] !== undefined) return key
   }
 
   return false
 })()
 
 export function prefixStyle(style: string) {
-  if (vendor === false)
-    return false
+  if (vendor === false) return false
 
-  if (vendor === 'standard')
-    return style
+  if (vendor === 'standard') return style
 
   return vendor + style.charAt(0).toUpperCase() + style.substr(1)
 }

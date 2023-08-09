@@ -16,7 +16,13 @@ const delay = prefixStyle('animation-delay')
 const transition = prefixStyle('transition')
 const fillMode = prefixStyle('animation-fill-mode')
 
-export function useLayout(props: WaterfallProps, colWidth: Ref<number>, cols: Ref<number>, offsetX: Ref<number>, waterfallWrapper: Ref<Nullable<HTMLElement>>) {
+export function useLayout(
+  props: WaterfallProps,
+  colWidth: Ref<number>,
+  cols: Ref<number>,
+  offsetX: Ref<number>,
+  waterfallWrapper: Ref<Nullable<HTMLElement>>,
+) {
   const posY = ref<number[]>([])
   const wrapperHeight = ref(0)
 
@@ -35,7 +41,7 @@ export function useLayout(props: WaterfallProps, colWidth: Ref<number>, cols: Re
   const animation = addAnimation(props)
 
   // 排版
-  const layoutHandle = async() => {
+  const layoutHandle = async () => {
     // 初始化y集合
     initY()
 
@@ -43,8 +49,7 @@ export function useLayout(props: WaterfallProps, colWidth: Ref<number>, cols: Re
     const items: HTMLElement[] = []
     if (waterfallWrapper && waterfallWrapper.value) {
       waterfallWrapper.value.childNodes.forEach((el: any) => {
-        if (el!.className === 'waterfall-item')
-          items.push(el)
+        if (el!.className === 'waterfall-item') items.push(el)
       })
     }
 
@@ -97,14 +102,11 @@ function addAnimation(props: WaterfallProps) {
       const delaySec = `${props.animationDelay / 1000}s`
       const style = content.style as CssStyleObject
       style.visibility = 'visible'
-      if (duration)
-        style[duration] = durationSec
+      if (duration) style[duration] = durationSec
 
-      if (delay)
-        style[delay] = delaySec
+      if (delay) style[delay] = delaySec
 
-      if (fillMode)
-        style[fillMode] = 'both'
+      if (fillMode) style[fillMode] = 'both'
 
       addClass(content, props.animationPrefix)
       addClass(content, props.animationEffect)

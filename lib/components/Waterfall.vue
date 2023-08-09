@@ -8,11 +8,7 @@
 -->
 <template>
   <div ref="waterfallWrapper" class="waterfall-list" :style="{ height: `${wrapperHeight}px` }">
-    <div
-      v-for="(item, index) in list"
-      :key="getKey(item, index)"
-      class="waterfall-item"
-    >
+    <div v-for="(item, index) in list" :key="getKey(item, index)" class="waterfall-item">
       <div class="waterfall-card">
         <slot name="item" :item="item" :index="index" :url="getRenderURL(item)" />
       </div>
@@ -98,7 +94,7 @@ export default defineComponent({
     },
     loadProps: {
       type: Object,
-      default: () => { },
+      default: () => {},
     },
     crossOrigin: {
       type: Boolean,
@@ -115,22 +111,10 @@ export default defineComponent({
     provide('lazy', lazy)
 
     // 容器块信息
-    const {
-      waterfallWrapper,
-      wrapperWidth,
-      colWidth,
-      cols,
-      offsetX,
-    } = useCalculateCols(props)
+    const { waterfallWrapper, wrapperWidth, colWidth, cols, offsetX } = useCalculateCols(props)
 
     // 容器高度，块定位
-    const { wrapperHeight, layoutHandle } = useLayout(
-      props,
-      colWidth,
-      cols,
-      offsetX,
-      waterfallWrapper,
-    )
+    const { wrapperHeight, layoutHandle } = useLayout(props, colWidth, cols, offsetX, waterfallWrapper)
 
     // 1s内最多执行一次排版，减少性能开销
     const renderer = useDebounceFn(() => {

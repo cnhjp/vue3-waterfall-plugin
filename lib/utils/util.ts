@@ -30,7 +30,7 @@ export function getValue(form: any, ...selectors: string[]) {
  */
 export function debounce(fn: (args?: any) => void, delay: number) {
   let timer: NodeJS.Timeout | null
-  return function(this: any, ...args: any) {
+  return function (this: any, ...args: any) {
     timer && clearTimeout(timer)
     timer = null
     timer = setTimeout(() => {
@@ -45,10 +45,10 @@ export function debounce(fn: (args?: any) => void, delay: number) {
  */
 export function checkIntersectionObserver(): boolean {
   if (
-    inBrowser
-    && 'IntersectionObserver' in window
-    && 'IntersectionObserverEntry' in window
-    && 'intersectionRatio' in window.IntersectionObserverEntry.prototype
+    inBrowser &&
+    'IntersectionObserver' in window &&
+    'IntersectionObserverEntry' in window &&
+    'intersectionRatio' in window.IntersectionObserverEntry.prototype
   ) {
     // Minimal polyfill for Edge 15's lack of `isIntersecting`
     // See: https://github.com/w3c/IntersectionObserver/issues/211
@@ -108,18 +108,15 @@ export function isValidKey(key: any): boolean {
  * @returns
  */
 function assignSymbols(target: any, ...args: any[]) {
-  if (!isObject(target))
-    throw new TypeError('expected the first argument to be an object')
+  if (!isObject(target)) throw new TypeError('expected the first argument to be an object')
 
-  if (args.length === 0 || typeof Symbol !== 'function' || typeof getSymbols !== 'function')
-    return target
+  if (args.length === 0 || typeof Symbol !== 'function' || typeof getSymbols !== 'function') return target
 
   for (const arg of args) {
     const names = getSymbols(arg)
 
     for (const key of names) {
-      if (isEnumerable.call(arg, key))
-        target[key] = arg[key]
+      if (isEnumerable.call(arg, key)) target[key] = arg[key]
     }
   }
   return target
@@ -142,11 +139,8 @@ export function assign(target: any, ...args: any[]): void {
     if (isObject(args[i])) {
       for (const key of Object.keys(args[i])) {
         if (isValidKey(key)) {
-          if (isObject(target[key]) && isObject(args[i][key]))
-            assign(target[key], args[i][key])
-
-          else
-            target[key] = args[i][key]
+          if (isObject(target[key]) && isObject(args[i][key])) assign(target[key], args[i][key])
+          else target[key] = args[i][key]
         }
       }
       assignSymbols(target, args[i])

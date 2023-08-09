@@ -40,6 +40,6 @@ const drawer = computed({
 
 <style>
 .el-drawer__body {
-  padding: 0!important;
+  padding: 0 !important;
 }
 </style>

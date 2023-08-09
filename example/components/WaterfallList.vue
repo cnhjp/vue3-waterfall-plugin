@@ -5,7 +5,7 @@
  * @FilePath: /vue3-waterfall/example/components/WaterfallList.vue
 -->
 <template>
-  <div style="width:100%">
+  <div style="width: 100%">
     <Waterfall
       :list="list"
       :row-key="options.rowKey"
@@ -23,20 +23,28 @@
       :cross-origin="options.crossOrigin"
     >
       <template #item="{ item, url, index }">
-        <div class="bg-gray-900 rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-linear hover:shadow-lg hover:shadow-gray-600 group" @click="handleClick(item)">
+        <div
+          class="bg-gray-900 rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-linear hover:shadow-lg hover:shadow-gray-600 group"
+          @click="handleClick(item)"
+        >
           <div class="overflow-hidden">
-            <LazyImg :url="url" class="cursor-pointer transition-all duration-300 ease-linear group-hover:scale-105" @load="imageLoad(url)" />
+            <LazyImg
+              :url="url"
+              class="cursor-pointer transition-all duration-300 ease-linear group-hover:scale-105"
+              @load="imageLoad(url)"
+            />
           </div>
           <div class="px-4 pt-2 pb-4 border-t border-t-gray-800">
             <h2 class="pb-4 text-gray-50 group-hover:text-yellow-300">
               {{ item.name }}
             </h2>
             <div class="pt-3 flex justify-between items-center border-t border-t-gray-600 border-opacity-50">
-              <div class="text-gray-50">
-                $ {{ item.price }}
-              </div>
+              <div class="text-gray-50">$ {{ item.price }}</div>
               <div>
-                <button class="px-3 h-7 rounded-full bg-red-500 text-sm text-white shadow-lg transition-all duration-300 hover:bg-red-600" @click.stop="handleDelete(item, index)">
+                <button
+                  class="px-3 h-7 rounded-full bg-red-500 text-sm text-white shadow-lg transition-all duration-300 hover:bg-red-600"
+                  @click.stop="handleDelete(item, index)"
+                >
                   删除
                 </button>
               </div>
@@ -47,7 +55,10 @@
     </Waterfall>
 
     <div class="flex justify-center py-10 bg-gray-900">
-      <button class="px-5 py-2 rounded-full bg-gray-700 text-md text-white cursor-pointer hover:bg-gray-800 transition-all duration-300" @click="handleLoadMore">
+      <button
+        class="px-5 py-2 rounded-full bg-gray-700 text-md text-white cursor-pointer hover:bg-gray-800 transition-all duration-300"
+        @click="handleLoadMore"
+      >
         加载更多
       </button>
     </div>
@@ -109,10 +120,8 @@ function handleClick(item: ViewCard) {
 }
 
 function imageLoad(url: string) {
-  console.log(`${url}: 加载完成`)
+  // console.log(`${url}: 加载完成`)
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

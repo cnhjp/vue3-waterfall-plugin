@@ -17,8 +17,7 @@ export function loadImage(url: string, crossOrigin: Boolean): Promise<HTMLImageE
     image.onerror = () => {
       reject(new Error('Image load error'))
     }
-    if (crossOrigin)
-      image.crossOrigin = 'Anonymous' // 支持跨域图片
+    if (crossOrigin) image.crossOrigin = 'Anonymous' // 支持跨域图片
 
     image.src = url
   })

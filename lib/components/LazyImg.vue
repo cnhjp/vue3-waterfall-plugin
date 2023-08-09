@@ -7,7 +7,7 @@
 <template>
   <div class="lazy__box">
     <div class="lazy__resource">
-      <img ref="lazyRef" class="lazy__img" @load="imageLoad">
+      <img ref="lazyRef" class="lazy__img" @load="imageLoad" />
     </div>
   </div>
 </template>
@@ -40,8 +40,7 @@ export default defineComponent({
     })
 
     function render() {
-      if (!lazyRef.value)
-        return
+      if (!lazyRef.value) return
 
       lazy.mount(lazyRef.value, props.url, () => {
         imgLoaded()
@@ -49,8 +48,7 @@ export default defineComponent({
     }
 
     function unRender() {
-      if (!lazyRef.value)
-        return
+      if (!lazyRef.value) return
 
       lazy.unmount(lazyRef.value)
     }
@@ -91,18 +89,18 @@ export default defineComponent({
   display: block;
 }
 
-.lazy__img[lazy="loading"] {
+.lazy__img[lazy='loading'] {
   padding: 5em 0;
   width: 48px;
   width: 48px;
 }
 
-.lazy__img[lazy="loaded"] {
+.lazy__img[lazy='loaded'] {
   width: 100%;
   height: 100%;
 }
 
-.lazy__img[lazy="error"] {
+.lazy__img[lazy='error'] {
   padding: 5em 0;
   width: 48px;
   height: auto;

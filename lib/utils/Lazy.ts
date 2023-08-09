@@ -46,8 +46,7 @@ export default class Lazy {
     el.setAttribute('src', loading || DEFAULT_LOADING)
     if (!this.lazyActive) {
       this._setImageSrc(el, src, callback, error)
-    }
-    else {
+    } else {
       if (!hasIntersectionObserver) {
         this._setImageSrc(el, src, callback, error)
         this._log(() => {
@@ -90,12 +89,10 @@ export default class Lazy {
    * @returns
    */
   _setImageSrc(el: HTMLImageElement, src: string, callback: () => void, error?: string): void {
-    if (!src)
-      return
+    if (!src) return
 
     const preSrc = el.getAttribute('src')
-    if (preSrc === src)
-      return
+    if (preSrc === src) return
 
     loadImage(src, this.crossOrigin)
       .then((image) => {
@@ -177,8 +174,7 @@ export default class Lazy {
 
   // 日志
   _log(callback: () => void): void {
-    if (this.options.log)
-      callback()
+    if (this.options.log) callback()
   }
 
   // 在map中获取对应img的observer事件
