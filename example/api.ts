@@ -100,8 +100,9 @@ export const getList = ({ page = 1, pageSize = 20 }) => {
     .then((res) => res.json())
     .then((res) => res.products)
     .then((res) => {
-      return res.map((item: any) => {
+      return res.map((item: any, i: number) => {
         return {
+          index: (page - 1) * pageSize + i + 1,
           id: randomID(),
           star: false,
           price: item.variants[0].price,

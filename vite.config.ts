@@ -11,7 +11,7 @@ import vue from '@vitejs/plugin-vue'
 const target = process.env.TARGET
 
 let buildConfig: Record<string, unknown> = {
-  outDir: 'netlify-page',
+  outDir: 'page',
 }
 
 if (target === 'npm') {

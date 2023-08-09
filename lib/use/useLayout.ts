@@ -51,7 +51,9 @@ export function useLayout(
       waterfallWrapper.value.childNodes.forEach((el: any) => {
         if (el!.className === 'waterfall-item') items.push(el)
       })
+      console.log('relayout items length: ', items.length)
     }
+
 
     // 获取节点
     if (items.length === 0) return false

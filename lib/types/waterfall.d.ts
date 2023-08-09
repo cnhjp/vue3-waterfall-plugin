@@ -5,6 +5,7 @@
  * @LastEditTime: 2022-03-23 14:44:20
  */
 export interface ViewCard {
+  index?: number,
   src: any
   id?: string
   name?: string

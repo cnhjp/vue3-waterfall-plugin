@@ -86,15 +86,15 @@ const options = reactive({
   breakpoints: {
     1200: {
       // 当屏幕宽度小于等于1200
-      rowPerView: 4,
+      rowPerView: 5,
     },
     800: {
       // 当屏幕宽度小于等于800
-      rowPerView: 3,
+      rowPerView: 4,
     },
     500: {
       // 当屏幕宽度小于等于500
-      rowPerView: 2,
+      rowPerView: 3,
     },
   },
   // 动画效果
@@ -103,6 +103,8 @@ const options = reactive({
   animationDuration: 1000,
   // 动画延迟
   animationDelay: 300,
+  // 防抖延迟
+  delay: 500,
   // 背景色
   backgroundColor: '#2C2E3A',
   // imgSelector
