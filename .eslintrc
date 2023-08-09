@@ -1,6 +1,10 @@
 {
   "root": true,
-  "extends": "@antfu",
-  "rules": {
-   }
+  "extends": [
+    "@antfu",
+    "eslint:recommended",
+    "standard",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {}
 }
