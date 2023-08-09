@@ -83,6 +83,14 @@ function randomColor() {
 //   return list
 // }
 
+// generate a random image with random size
+function randomImage() {
+  const width = Math.floor(Math.random() * 1000) + 200
+  const height = Math.floor(Math.random() * 1000) + 200
+  const url = `https://picsum.photos/${width}/${height}`
+  return url
+}
+
 const website = 'https://www.getphotoblanket.com'
 // const website = 'https://www.getphotoblanket.com';
 
@@ -97,7 +105,8 @@ export const getList = ({ page = 1, pageSize = 20 }) => {
           star: false,
           price: item.variants[0].price,
           src: {
-            original: item.images[0].src,
+            // original: item.images[0].src,
+            original: randomImage(),
           },
           backgroundColor: randomColor(),
           name: item.title,
